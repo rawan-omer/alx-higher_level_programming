@@ -4,6 +4,6 @@ for r in range(0, 10):
         if r >= c:
             continue
         elif r != 8 and c != 9:
-            print("{}{}, ".format(r, c))
+            print("{}{}, ".format(r, c), end="")
         else:
             print("{}{}".format(r, c))
