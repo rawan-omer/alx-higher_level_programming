@@ -1,4 +1,4 @@
-#include "list.h"
+#include "lists.h"
 /**
  * is_palindrome - check if the number is palindrome
  * @head: the head of list
