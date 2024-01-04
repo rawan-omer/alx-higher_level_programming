@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-"""define a Rectangle"""
+"""Definetion of a Rectangle"""
 
 
 class Rectangle:
-    """Rectangle class"""
+    """Rectangle class defines a rectangle """
     number_of_instances = 0
     print_symbol = "#"
 
@@ -18,10 +18,10 @@ class Rectangle:
         if self.__height == 0 or self.__width == 0:
             return ""
         size = str(self.print_symbol) * self.__width
-        rect = []
+        alist = []
         for index in range(self.__height):
-            rect.append(size)
-        return "\n".join(rect)
+            alist.append(size)
+        return "\n".join(alist)
 
     def __repr__(self):
         """Returns rectangle representation"""
