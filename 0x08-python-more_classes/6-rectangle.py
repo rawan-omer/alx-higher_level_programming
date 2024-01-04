@@ -5,10 +5,13 @@
 class Rectangle:
     """Rectangle that defines a rectangle"""
 
+    rect_num = 0
+
     def __init__(self, width=0, height=0):
         """The Rectangle"""
         self.width = width
         self.height = height
+        Rectangle.rect_num += 1
 
     def __str__(self):
         """prints the rectangle with the character #"""
@@ -22,13 +25,13 @@ class Rectangle:
 
     def __repr__(self):
         """Returns representation of Rectangle"""
-        return "{:s}({:d}, {:d})".format((type(self).__name__), self.__width,
-                                   self.__height)
+        return "{:s}({:d}, {:d})".format(type(self).__name__,
+                                         self.__width, self.__height)
+
     def __del__(self):
         """delete the Rectangle by decrease it"""
-        Rectangle.number_of_instances -= 1
+        Rectangle.rect_num -= 1
         print("Bye rectangle...")
-
 
     @property
     def width(self):
@@ -66,4 +69,4 @@ class Rectangle:
         """returns the perimeter of rectangle"""
         if self.__height == 0 or self.__width == 0:
             return
-        return (self.__height + self.__height) + (self.__width + self.__width)
+        return 2 * (self.__width + self.__width)
