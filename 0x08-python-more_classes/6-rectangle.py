@@ -4,13 +4,13 @@
 
 class Rectangle:
     """Rectangle that defines a rectangle"""
-    rect_num = 0
+    number_of_instances = 0
 
     def __init__(self, width=0, height=0):
         """The Rectangle"""
         self.width = width
         self.height = height
-        Rectangle.rect_num += 1
+        Rectangle.number_of_instances += 1
 
     def __str__(self):
         """prints the rectangle with the character #"""
@@ -29,7 +29,7 @@ class Rectangle:
 
     def __del__(self):
         """delete the Rectangle by decrease it"""
-        Rectangle.rect_num -= 1
+        Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
 
     @property
