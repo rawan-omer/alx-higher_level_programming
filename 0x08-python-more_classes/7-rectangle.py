@@ -1,45 +1,46 @@
 #!/usr/bin/python3
-"""Rectangle class definetion"""
+"""Rectangle class definition"""
 
 
 class Rectangle:
-    """Rectangle that defines a rectangle"""
-    rect_num = 0
+    """Rectangle class that defines a rectangle"""
+    i = 0
+    print_symbol = "#"
 
     def __init__(self, width=0, height=0):
-        """The Rectangle"""
+        """the Rectangle"""
         self.width = width
         self.height = height
-        Rectangle.rect_num += 1
+        Rectangle.i += 1
 
     def __str__(self):
-        """prints the rectangle with the character #"""
+        """prints the rectangle with the character(s) stored"""
         if self.__height == 0 or self.__width == 0:
             return ""
-        size = "#" * self.__width
+        size = str(self.print_symbol) * self.__width
         alist = []
         for index in range(self.__height):
             alist.append(size)
         return "\n".join(alist)
 
     def __repr__(self):
-        """Returns representation of Rectangle"""
+        """the rectangle representation"""
         return "{:s}({:d}, {:d})".format((type(self).__name__),
                                          self.__width, self.__height)
 
     def __del__(self):
-        """delete the Rectangle by decrease it"""
-        Rectangle.rect_num -= 1
+        """delete the Rectangle"""
+        Rectangle.i -= 1
         print("Bye rectangle...")
 
     @property
     def width(self):
-        """Width getter"""
+        """the width getter"""
         return self.__width
 
     @width.setter
     def width(self, value):
-        """Rectangle width setter"""
+        """the width setter"""
         if type(value) != int:
             raise TypeError("width must be an integer")
         if value < 0:
@@ -48,12 +49,12 @@ class Rectangle:
 
     @property
     def height(self):
-        """Height getter"""
+        """the height getter"""
         return self.__height
 
     @height.setter
     def height(self, value):
-        """Height setter"""
+        """the height setter"""
         if type(value) != int:
             raise TypeError("height must be an integer")
         if value < 0:
@@ -65,7 +66,7 @@ class Rectangle:
         return self.__height * self.__width
 
     def perimeter(self):
-        """returns the perimeter of rectangle"""
+        """Returns rectangle perimeter"""
         if self.__height == 0 or self.__width == 0:
-            return 0
-        return 2 * (self.__width + self.__width)
+            return
+        return 2 * (self.__height + self.__width)
