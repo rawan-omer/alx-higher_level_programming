@@ -5,6 +5,7 @@ BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 class Rectangle(BaseGeometry):
     """Rectangle class  that inherits from BaseGeometry"""
+
     def __init__(self, width, height):
         """Instantiation with width and height:"""
         self.integer_validator("width", width)
@@ -18,4 +19,4 @@ class Rectangle(BaseGeometry):
 
     def __str__(self):
         """The represimtation of the String"""
-        return f"[Rectangle] {self.__width}/{self.__height}"
+        return "[Rectangle] {}/{}".format(self.__width, self.__height)
