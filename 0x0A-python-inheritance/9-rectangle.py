@@ -14,8 +14,8 @@ class Rectangle(BaseGeometry):
 
     def area(self):
         """method must be implemented"""
-        return (self.__width * self.__height)
+        return self.__width * self.__height
 
     def __str__(self):
         """The represimtation of the String"""
-        return "[Rectangle] " + str(self.__width) + "/" + str(self.__height)
+        return f"[Rectangle] {self.__width}/{self.__height}"
