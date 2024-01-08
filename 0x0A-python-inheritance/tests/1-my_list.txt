@@ -1,3 +1,4 @@
+''print_sorted()'' returns the list sorted.
    >>> MyList = __import__('1-my_list').MyList
    >>> my_list = MyList()
    >>> isinstance(my_list, list)
