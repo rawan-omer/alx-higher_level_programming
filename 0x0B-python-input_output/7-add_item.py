@@ -4,20 +4,17 @@
 import json
 import os.path
 from sys import argv
-from os.path import exists
 save_to_json_file = __import__('7-save_to_json_file').save_to_json_file
 load_from_json_file = __import__('8-load_from_json_file').load_from_json_file
 
 filename = "add_item.json"
 
-try:
-    if exists(filename):
-        json_list = load_from_json_file(filename)
-    else:
-        json_list = []
-except FileNotFoundError:
-    json_list = []
+alist = []
 
-json_list.extend(argv[1:])
+if os.path.exists(filename):
+    alist = load_from_json_file(filename)
 
-save_to_json_file(json_list, filename)
+for i in argv[1:]:
+    alist.append(i)
+
+save_to_json_file(alist, filename)
