@@ -1,16 +1,23 @@
 #!/usr/bin/python3
 """add_item Definition"""
 
-
-import sys
+import json
+import os.path
+from sys import argv
+from os.path import exists
 save_to_json_file = __import__('7-save_to_json_file').save_to_json_file
 load_from_json_file = __import__('8-load_from_json_file').load_from_json_file
 
-alist = list(sys.argv[1:])
-try:
-    old_data = load_from_json_file('add_item.json')
-except Exception:
-    old_data = []
+filename = "add_item.json"
 
-old_data.extend(alist)
-save_to_json_file(old_data, 'add_item.json')
+try:
+    if exists(filename):
+        json_list = load_from_json_file(filename)
+    else:
+        json_list = []
+except FileNotFoundError:
+    json_list = []
+
+json_list.extend(argv[1:])
+
+save_to_json_file(json_list, filename)
