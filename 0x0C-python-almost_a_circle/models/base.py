@@ -7,7 +7,7 @@ class Base:
     __nb_objects = 0
     def __init__(self, id=None):
         """function to manage id attribute"""
-        if id not None:
+        if id is not None:
             id.self = id
         else:
             Base.__nb_objects += 1
