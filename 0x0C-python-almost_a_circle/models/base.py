@@ -3,8 +3,6 @@
 import json
 import csv
 from os import path
-from models.rectangle import Rectangle
-from models.square import Square
 
 
 class Base:
@@ -44,6 +42,7 @@ class Base:
     @classmethod
     def load_from_file(cls):
         ''' returns a list of instances'''
+        from os import path
         file = "{}.json".format(cls.__name__)
         if not path.isfile(file):
             return []
@@ -53,6 +52,8 @@ class Base:
     @classmethod
     def create(cls, **dictionary):
         '''returns an instance with all attributes already set'''
+        from models.rectangle import Rectangle
+        from models.square import Square
         if cls is Rectangle:
             alist = Rectangle(1, 1)
         elif cls is Square:
@@ -65,6 +66,8 @@ class Base:
     @classmethod
     def save_to_file_csv(cls, list_objs):
         '''serializes and deserializes in CSV'''
+        from models.rectangle import Rectangle
+        from models.square import Square
         if list_objs is not None:
             if cls is Rectangle:
                 list_objs = [[o.id, o.width, o.height, o.x, o.y]
@@ -80,6 +83,8 @@ class Base:
     @classmethod
     def load_from_file_csv(cls):
         '''returns a list of instances'''
+        from models.rectangle import Rectangle
+        from models.square import Square
         dum = []
         if not path.isfile(file):
             return []
