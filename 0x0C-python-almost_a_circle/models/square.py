@@ -5,6 +5,7 @@ from models.rectangle import Rectangle
 
 class Square(Rectangle):
     '''Square that inherits from Rectangle'''
+
     def __init__(self, size, x=0, y=0, id=None):
         '''Class init'''
         super().__init__(size, size, x, y, id)
@@ -25,7 +26,7 @@ class Square(Rectangle):
         self.width = value
         self.hight = value
 
-def __update(self, id=None, size=None, x=None, y=None):
+    def __update(self, id=None, size=None, x=None, y=None):
         '''update functin to check the inputed arguments'''
         if id is not None:
             self.id = id
