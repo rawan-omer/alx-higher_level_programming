@@ -2,7 +2,7 @@
 """Base class definition"""
 import json
 import csv
-from os import path
+import os
 
 
 class Base:
@@ -80,14 +80,3 @@ class Base:
                   encoding='utf-8') as f:
             writer = csv.writer(f)
             writer.writerows(list_objs)
-
-    @classmethod
-    def load_from_file_csv(cls):
-        '''returns a list of instances'''
-        from models.rectangle import Rectangle
-        from models.square import Square
-        dum = []
-        if not path.isfile(file):
-            return []
-        with open(file, "r", encoding="utf-8") as file:
-            return [cls.create(**d) for d in cls.from_json_string(f.read())]
