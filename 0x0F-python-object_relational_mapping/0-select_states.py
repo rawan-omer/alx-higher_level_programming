@@ -8,10 +8,12 @@ if __name__ == '__main__':
         print("Usage: {} username password database".format(sys.argv[0]))
         sys.exit(1)
 
-    name, passw, datab = sys.argv[1], sys.argv[2], sys.argv[3]
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
 
     try:
-        db = MySQLdb.connect(host='localhost', port=3306, user=name, passwd=passw, db=datab)
+        db = MySQLdb.connect(host='localhost', port=3306, user=username, passwd=password, db=database)
         cursor = db.cursor()
         cursor.execute("SELECT * FROM states ORDER BY id ASC")
 
