@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """lists all states from the database hbtn_0e_0_usa"""
+
 import MySQLdb
 from sys import argv
 
@@ -11,9 +12,8 @@ if __name__ == '__main__':
     cur = db.cursor()
     cur.execute("SELECT * FROM states")
 
-    row = cur.fetchall()
-    for r in row:
-        print(r)
-
+    rows = cur.fetchall()
+    for i in rows:
+        print(i)
     cur.close()
     db.close()
