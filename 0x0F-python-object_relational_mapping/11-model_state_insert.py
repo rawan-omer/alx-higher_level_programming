@@ -1,41 +1,24 @@
 #!/usr/bin/python3
-import sys
+"""adds the State object “Louisiana” to the database hbtn_0e_6_usa"""
+
+from model_state import Base, State
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from model_state import Base, State
+from sys import argv
 
-if __name__ == '__main__':
-    if len(sys.argv) != 4:
-        print("Usage: {} <mysql_username> <mysql_password> <database_name>".format(sys.argv[0]))
-        sys.exit(1)
+if __name__ == "__main__":
+    # create an engine
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
+        argv[1], argv[2], argv[3]), pool_pre_ping=True)
+    # create a configured "Session" class
+    Session = sessionmaker(bind=engine)
+    # create a Session
+    session = Session()
+    Base.metadata.create_all(engine)
 
-    mysql_username = sys.argv[1]
-    mysql_password = sys.argv[2]
-    database_name = sys.argv[3]
-
-    # Create an engine to connect to the MySQL server
-    engine = create_engine(
-        'mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
-            mysql_username, mysql_password, database_name
-        )
-    )
-
-    # Bind the engine to the Base class
-    Base.metadata.bind = engine
-
-    # Create a session maker bound to the engine
-    DBSession = sessionmaker(bind=engine)
-
-    # Create a session object
-    session = DBSession()
-
-    # Create a new State object and add it to the session
-    new_state = State(name="Louisiana")
-    session.add(new_state)
+    add_state = State(name="Louisiana")
+    session.add(add_state)
+    # commit and close session
     session.commit()
-
-    # Print the new state's id
-    print(new_state.id)
-
-    # Close the session
+    print(add_state.id)
     session.close()
